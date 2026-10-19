@@ -5,30 +5,37 @@ on:
 
 jobs:
   test-win:
-    steps:
-      - name: "Checkout"
-        run: actions/checkout@v4
-      - name: "setup-python"
-        run: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: "Test-Win"
-        run: python -m unittest -v
+    runs-on: windows-latest
+      steps:
+        - name: "Checkout"
+          run: actions/checkout@v4
+        - name: "setup-python"
+          run: actions/setup-python@v5
+          with:
+            python-version: "3.12"
+        - name: "Test-Win"
+          run: python -m unittest -v
 
   test-linux:
-      - name: "Checkout"
-        run: actions/checkout@v4
-      - name: "setup-python"
-        run: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-      
+    runs-on: ubuntu-latest
+      steps:
+        - name: "Checkout"
+          run: actions/checkout@v4
+        - name: "setup-python"
+          run: actions/setup-python@v5
+          with:
+            python-version: "3.13"
+        - name: "Test linux"
+          run: python -m unittest -v
+
   test-mac:
-      - name: "Checkout"
-        run: actions/checkout@v4
-      - name: "setup-python"
-        run: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-      - name: "Test-Mac"
-        run: python -m unittest -v
+    runs-on: macos-latest
+      steps:
+        - name: "Checkout"
+          run: actions/checkout@v4
+        - name: "setup-python"
+          run: actions/setup-python@v5
+          with:
+            python-version: "3.13"
+        - name: "Test-Mac"
+          run: python -m unittest -v
